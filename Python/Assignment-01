@@ -1,1 +1,252 @@
+ Q1. Create one variable containing following type of data:
+(i) string
+(ii) list
+(iii) float
+(iv) tuple
+
+...... 
+
+my_string = "Hello World"
+
+my_list = [1,2,3,4,5]
+
+my_float = 40.23
+
+my_tuple = (1,2,3)
+
+--------------------------------------------------------------------------------------------------------------
+
+
+
+Q2. Given are some following variables containing data:
+(i) var1 = ‘ ‘
+(ii) var2 = ‘[ DS , ML , Python]’
+(iii) var3 = [ ‘DS’ , ’ML’ , ‘Python’ ]
+(iv) var4 = 1.
+What will be the data type of the above given variable.
+
+
+
+
+var1 = ''
+#  (1) var1 : it is a string variable 
+ 
+var2 = '[ DS , ML , Python]'
+#  (2) var2 : it  is a string containing a list representation
+
+var3 = [ 'DS' , 'ML' , 'Python' ]
+#  (3) var3 : it is a list variable
+
+var4 = 1.
+#  (4) var4 : it is float variable
+
+---------------------------------------------------------------------------------------------------------------------------
+
+
+Q3. Explain the use of the following operators using an example:
+(i) /
+(ii) %
+(iii) //
+(iv) **
+
+
+# (i) / (Division Operator):
+# The division operator / is used to divide one number by another and obtain the quotient as a result.
+
+# Example :
+a = 10
+b = 3
+result = a / b
+print(result)
+
+# Output :
+3.33
+
+
+# (ii) % (Modulo Operator):
+# The modulo operator % is used to calculate the remainder when one number is divided by another. 
+
+# Example:
+
+a = 10
+b = 3
+remainder = a % b
+print(remainder)
+
+# Output:
+1
+
+
+# (iii) // (Floor Division Operator):
+# The floor division operator // performs division similar to the / operator but rounds down the result to the nearest integer number.
+
+# Example :
+a = 10
+b = 3
+result = a // b
+print(result)
+
+#Output:
+
+3
+
+
+# (iv) ** (Exponentiation Operator):
+# The exponentiation operator ** is used to raise a number to the power of another number. 
+
+#Example :
+base = 2
+exponent = 3
+result = base ** exponent
+print(result)
+
+# Output:
+8
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+# Q4. Create a list of length 10 of your choice containing multiple types of data.
+# Using for loop print the element and its data type.
+
+# Code: 
+
+my_list = [10, 3.14, "Hello", True, [1, 2, 3], (4, 5), {"name": "John", "age": 25}, None, 5 + 2j, False]
+
+for element in my_list:
+    print(f"Element: {element} | Data Type: {type(element)}")
+
+
+# output :
+
+#  Element: 10 | Data Type: <class 'int'>
+#  Element: 3.14 | Data Type: <class 'float'>
+#  Element: Hello | Data Type: <class 'str'>
+#  Element: True | Data Type: <class 'bool'>
+#  Element: [1, 2, 3] | Data Type: <class 'list'>
+#  Element: (4, 5) | Data Type: <class 'tuple'>
+#  Element: {'name': 'John', 'age': 25} | Data Type: <class 'dict'>
+#  Element: None | Data Type: <class 'NoneType'>
+#  Element: (5+2j) | Data Type: <class 'complex'>
+#  Element: False | Data Type: <class 'bool'>
+
+
+
+------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+# Q5. Using a while loop, verify if the number A is purely divisible by number B and 
+# if so then how many times it can be divisible.
+
+# Code :
+
+a = 100
+b = 5
+count = 0
+
+while a % b == 0:
+    a = a // b
+    count += 1
+print(f"{b} can divide {100} completely in : {count} times")
+
+#output :
+
+#  5 can divide 100 completely in : 2 times
+
+
+----------------------------------------------------------------------------------------------------------------------------
+
+
+
+# Q6. Create a list containing 25 int type data. Using for loop and if-else 
+# condition print if the element is divisible by 3 or not.
+
+
+my_list = [12, 5, 18, 9, 7, 15, 21, 2, 30, 14, 27, 4, 6, 11, 19, 22, 33, 8, 17, 25, 13, 36, 1, 16, 10]
+
+for element in my_list:
+    if element % 3 == 0:
+        print(f"{element} is devisible by 3")
+    else:
+        print(f"{element} is not divisible by 3")
+
+
+# output :
+
+#  12 is divisible by 3
+#  5 is not divisible by 3
+#  18 is divisible by 3
+#  9 is divisible by 3
+#  7 is not divisible by 3
+#  15 is divisible by 3
+#  21 is divisible by 3
+#  2 is not divisible by 3
+#  30 is divisible by 3
+#  14 is not divisible by 3
+#  27 is divisible by 3
+#  4 is not divisible by 3
+#  6 is divisible by 3
+#  11 is not divisible by 3
+#  19 is not divisible by 3
+#  22 is not divisible by 3
+#  33 is divisible by 3
+#  8 is not divisible by 3
+#  17 is not divisible by 3
+#  25 is not divisible by 3
+#  13 is not divisible by 3
+#  36 is divisible by 3
+#  1 is not divisible by 3
+#  16 is not divisible by 3
+#  10 is not divisible by 3
+
+
+------------------------------------------------------------------------------------------------------------------------------
+
+
+
+#  Q7. What do you understand about mutable and immutable data types?
+# Give examples for both showing this property.
+
+
+
+
+#   Mutable and immutable are concepts used to describe the behavior of data types in programming.
+
+#  Mutable Data Types:
+#  Mutable data types are those that can be modified or changed after they are created.
+#  Examples of mutable data types in Python include lists, dictionaries, and sets.
+# Example:
+
+my_list = [1, 2, 3]
+print(my_list)  # Output: [1, 2, 3]
+
+my_list.append(4)
+print(my_list)  # Output: [1, 2, 3, 4]
+
+my_list[0] = 5
+print(my_list)  # Output: [5, 2, 3, 4]
+
+
+
+#  Immutable Data Types:
+#  Immutable data types, on the other hand, cannot be modified once they are created.
+#  Examples of immutable data types in Python include integers, floats, strings, and tuples.
+
+#  Example :
+
+my_integer = 10
+print(my_integer)  # Output: 10
+
+my_integer = 20
+print(my_integer)  # Output: 20
+
+my_string = "Hello"
+print(my_string)  # Output: Hello
+
+my_string = "World"
+print(my_string)  # Output: World
 
