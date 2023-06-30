@@ -1,0 +1,156 @@
+"""
+Q1, Create a vehicle class with an init method having instance variables as name_of_vehicle, max_speed
+and average_of_vehicle.
+
+"""
+
+
+class vehicle:
+    def __init__(self, name_of_vehicle, max_speed, average_of_vehicle):
+        self.name_of_vehicle = name_of_vehicle
+        self.max_speed = max_speed
+        self.average_of_vehicle = average_of_vehicle
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+
+"""
+Q2. Create a child class car from the vehicle class created in Que 1, which will inherit the vehicle class.
+Create a method named seating_capacity which takes capacity as an argument and returns the name of
+the vehicle and its seating capacity.
+"""
+
+class Car(vehicle):
+    def seating_capacity(self, capacity):
+        return f"{self.name_of_vehicle} has a seating capacity of {capacity} people."
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+
+
+"""
+Q3. What is multiple inheritance? Write a python code to demonstrate multiple inheritance.
+
+
+
+Multiple inheritance is a concept in object-oriented programming where a class can inherit attributes and behaviors
+from more than one parent class. In other words, a child class can have multiple parent classes.
+This allows the child class to acquire and combine the features and functionalities of multiple classes.
+
+
+"""
+
+class Vehicle:
+    def __init__(self, name):
+        self.name = name
+    
+    def drive(self):
+        print(f"{self.name} is being driven")
+    
+class car_roof:
+    def open_roof(self):
+        print("Roof is opened")
+    
+    def close_roof(self):
+        print("Roof is closed")
+
+class SportsCar(Vehicle,car_roof):
+    def __init__(self, name):
+        super().__init__(self, name)
+
+car = SportsCar("Ferrari")
+car.drive()                 # Output: Ferrari is being driven.
+car.open_roof()             # Output: Roof is opened.
+car.close_roof()            # Output: Roof is closed.
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+"""
+Q4. What are getter and setter in python? Create a class and create a getter and a setter method in this
+class.
+
+
+In Python, getters and setters are methods used to access (get) and modify (set) the values
+of class attributes respectively. They provide a way to control the access and modification 
+of class attributes, allowing for data encapsulation and ensuring proper data handling.
+"""
+
+class Rectange:
+    def __init__(self, width, height):
+        self._width = width
+        self._height = height
+    
+    def get_width(self):
+        return self._width
+    
+    def set_width(self, new_width):
+        if new_width > 0:
+            self._width = new_width
+        else:
+            print("Width must be greater than 0")
+          
+    def get_height(self):
+        return self._height
+    
+    def set_height(self, new_height):
+        if new_height > 0:
+            self._height = new_height
+        else:
+            print("Height should be greater than 0")
+
+
+rect = Rectange(5, 3)
+print(rect.get_width())          # Output : 5
+print(rect.get_height())         # Output : 3
+
+rect.set_width(7)
+rect.set_height(4)
+
+print(rect.get_width())          # Output : 7
+print(rect.get_height())         # Output : 4
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+"""
+Q5.What is method overriding in python? Write a python code to demonstrate method overriding.
+
+Method overriding is a concept in object-oriented programming where a subclass can 
+provide its own implementation of a method that is already defined in its parent class. 
+It allows the subclass to change or extend the behavior of the inherited method 
+according to its specific needs.
+
+
+
+"""
+
+
+class Ola:
+    def drive(self):
+        print("Driving a Ola cab")
+
+class car(Ola):
+    def drive(self):
+        print("Dirving a Ola car")
+      
+class bike(Ola):
+    def drive(self):
+        print("Driving a Ola bike")
+
+
+
+Ola = Ola()
+car = car()
+bike = bike()
+
+vehicle.drive()      # Output: Driving a vehicle.
+car.drive()          # Output: Driving a car.
+motorcycle.drive()   # Output: Driving a motorcycle.
