@@ -1,0 +1,156 @@
+Q1. What is Abstraction in OOps? Explain with an example.
+
+Abstraction is a fundamental concept in object-oriented programming (OOP) that involves simplifying 
+complex systems by representing essential features while hiding unnecessary details. 
+It allows us to focus on the essential aspects of an object or system, ignoring the irrelevant complexities.
+
+
+from abc import ABC, abstractmethod
+
+# Abstract class
+class Animal(ABC):
+    @abstractmethod
+    def sound(self):
+        pass
+
+# implementing the abstract method
+class Dog(Animal):
+    def sound(self):
+        print("Dog barks")
+
+class Cat(Animal):
+    def sound(self):
+        print("Cat meows")
+
+# Creating objects and calling methods
+dog = Dog()
+dog.sound()  # Output: Dog barks
+
+cat = Cat()
+cat.sound()  # Output: Cat meows
+
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q2. Differentiate between Abstraction and Encapsulation. Explain with an example.
+
+
+Abstraction focuses on simplifying complex systems by representing essential features while hiding unnecessary details. 
+It allows us to model real-world entities or systems at a higher level of abstraction, focusing on what an object does 
+rather than how it does it. 
+
+Encapsulation, on the other hand, is about bundling data and methods/functions that operate on that data within a single
+unit called a class. It involves the concept of information hiding, where the internal implementation details of an 
+object are hidden from outside access.
+
+
+# Abstraction example
+from abc import ABC, abstractmethod
+
+class Shape(ABC):
+    @abstractmethod
+    def area(self):
+        pass
+
+class Rectangle(Shape):
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    def area(self):
+        return self.width * self.height
+
+# Encapsulation example
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def get_age(self):
+        return self.age
+
+    def set_age(self, new_age):
+        if new_age > 0:
+            self.age = new_age
+
+# Usage of the abstraction and encapsulation examples
+rectangle = Rectangle(5, 10)
+print(rectangle.area())  # Output: 50
+
+person = Person("John", 25)
+print(person.get_age())  # Output: 25
+
+person.set_age(30)
+print(person.get_age())  # Output: 30
+
+person.set_age(-5)
+print(person.get_age())  # Output: 30 (age remains unchanged)
+
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q3. What is abc module in python? Why is it used?
+
+The abc module in Python stands for "Abstract Base Classes."
+
+It is a module that provides infrastructure for defining abstract base classes in Python. 
+Abstract base classes (ABCs) are classes that cannot be instantiated themselves but are 
+designed to be subclassed by other classes. They serve as a way to define common 
+interfaces and establish a hierarchy of classes.
+
+The abc module is used to create abstract base classes and enforce certain methods or attributes
+to be implemented by their subclasses. It provides the ABC class as a base class for defining 
+abstract base classes and the abstractmethod decorator to define abstract methods.
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q4. How can we achieve data abstraction?
+
+In Python, we can achieve data abstraction through the use of classes and objects. 
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q5. Can we create an instance of an abstract class? Explain your answer.
+
+
+No, we cannot create an instance of an abstract class in Python. Abstract classes are designed to be 
+inherited by other classes, and they are not meant to be instantiated directly.
+
+When we define an abstract class using the abc module in Python, we mark it as abstract by subclassing 
+it from the ABC class and using the abstractmethod decorator for one or more methods within the class.
+
+
+
+from abc import ABC, abstractmethod
+
+class AbstractClass(ABC):
+    @abstractmethod
+    def abstract_method(self):
+        pass
+
+# Attempt to create an instance of the abstract class
+obj = AbstractClass()  # Raises TypeError
+
+
+
+
+
+
+
+
+
+
+
+
