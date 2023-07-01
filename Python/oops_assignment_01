@@ -1,0 +1,174 @@
+Q1. Explain Class and Object with respect to Object-Oriented Programming. Give a suitable example.
+
+
+A class is a blueprint or template that defines the properties (attributes) and 
+behaviors (methods/functions) that objects of that class will have.
+
+
+An object, is an instance of a class. It represents a specific entity or item that belongs
+to the class. An object is created based on the blueprint provided by the class.
+It encapsulates the data (attributes) and behaviors (methods) defined by the class.
+
+
+class Car:
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+    
+    def start_engine(self):
+        print("Engine started.")
+
+    def stop_engine(self):
+        print("Engine stopped.")
+
+# Creating objects of the Car class
+car1 = Car("Toyota", "Camry", 2022)
+car2 = Car("Honda", "Accord", 2023)
+
+# Accessing object attributes
+print(car1.make)  # Output: Toyota
+print(car2.year)  # Output: 2023
+
+# Calling object methods
+car1.start_engine()  # Output: Engine started.
+car2.stop_engine()  # Output: Engine stopped.
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+Q2. Name the four pillars of OOPs.
+
+(1)  Encapsulation: Encapsulation is the concept of bundling data and methods/functions that operate 
+     on that data within a single unit called a class. It allows for the hiding of internal implementation 
+     details of an object and provides access to the object's properties and behaviors through well-defined interfaces.
+
+(2)  Inheritance: Inheritance enables classes to inherit properties and methods from other classes. 
+     It establishes a parent-child relationship between classes, where the child class (derived class) 
+     inherits characteristics from the parent class (base class).
+
+(3)  Polymorphism: Polymorphism refers to the ability of objects to take on multiple forms or have multiple behaviors. 
+     It allows different objects to be treated uniformly, even if they belong to different classes.
+
+(4)  Abstraction: Abstraction involves simplifying complex systems by representing essential features 
+     while hiding unnecessary details. It allows the creation of abstract classes and interfaces, 
+     which define common attributes and behaviors for subclasses to implement.
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+Q3. Explain why the __init__() function is used. Give a suitable example.
+
+
+
+The __init__() function in Python is a special method that is automatically called when an object 
+is created from a class. It is also known as the constructor method. The primary purpose of the 
+__init__() function is to initialize the attributes of an object and perform any necessary setup or initialization tasks.
+
+
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    
+    def introduce(self):
+        print(f"My name is {self.name} and I am {self.age} years old.")
+
+# Creating objects of the Person class
+person1 = Person("John", 25)
+person2 = Person("Alice", 30)
+
+# Calling object methods
+person1.introduce()  # Output: My name is John and I am 25 years old.
+person2.introduce()  # Output: My name is Alice and I am 30 years old.
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+Q4. Why self is used in OOPs?
+
+
+self acts as a reference to the current instance of the class, providing a way to access and manipulate 
+the object's attributes and methods. It enables object-specific operations and helps in distinguishing 
+between instance variables and local variables within a method.
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+Q5. What is inheritance? Give an example for each type of inheritance.
+
+(1)  Single Inheritance:
+
+Single inheritance involves a child class inheriting properties and behaviors from a single parent class.
+
+Example:
+
+class Animal:
+    def sound(self):
+        print("Animal makes a sound")
+
+class Dog(Animal):
+    def breed(self):
+        print("Dog belongs to a specific breed")
+
+dog = Dog()
+dog.sound()  # Output: Animal makes a sound
+dog.breed()  # Output: Dog belongs to a specific breed
+
+
+(2)  Multiple Inheritance:
+
+Multiple inheritance allows a child class to inherit properties and behaviors from multiple parent classes.
+
+Example:
+
+class Mammal:
+    def feed_milk(self):
+        print("Mammal feeds milk")
+
+class Canine:
+    def sound(self):
+        print("Canine makes a sound")
+
+class Dog(Mammal, Canine):
+    pass
+
+dog = Dog()
+dog.feed_milk()  # Output: Mammal feeds milk
+dog.sound()      # Output: Canine makes a sound
+
+
+
+(3)  Hierarchical Inheritance:
+
+Hierarchical inheritance allows multiple child classes to inherit from a single parent class.
+
+Example:
+
+class Animal:
+    def sound(self):
+        print("Animal makes a sound")
+
+class Dog(Animal):
+    def breed(self):
+        print("Dog belongs to a specific breed")
+
+class Cat(Animal):
+    def meow(self):
+        print("Cat makes a 'meow' sound")
+
+dog = Dog()
+dog.sound()  # Output: Animal makes a sound
+dog.breed()  # Output: Dog belongs to a specific breed
+
+cat = Cat()
+cat.sound()  # Output: Animal makes a sound
+cat.meow()  # Output: Cat makes a 'meow' sound
+
+
+
+
+
