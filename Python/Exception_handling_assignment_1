@@ -1,0 +1,216 @@
+Q1. what is an Exception in python? Write the difference between Exceptions and Syntax errors.
+
+
+
+In Python, an exception is an event that occurs during the execution of a program that disrupts the normal flow 
+of instructions. When an exceptional condition arises, an exception object is created, which contains information about the error.
+
+Syntax errors: 
+    Syntax errors occur when the code violates the rules of the Python language. 
+    These errors prevent the program from being compiled or interpreted correctly. 
+    They are usually caused by mistakes like misspelled keywords, missing parentheses, or incorrect indentation. 
+    Syntax errors are identified by the Python interpreter and are reported immediately. 
+
+
+Exceptions: 
+    Exceptions, on the other hand, are runtime errors that occur during the execution of a program. 
+    They indicate exceptional conditions that may arise during the program's execution and disrupt the normal flow. 
+    Exceptions can be handled using try-except blocks, allowing you to gracefully handle errors and prevent the program from crashing. 
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q2. what happens when an exception is not handled? Explain with an example.
+
+
+When an exception is not handled in Python, it leads to the termination of the program with an error message. 
+This termination occurs because the unhandled exception propagates up the call stack until it reaches the top-level 
+of the program, where it is not caught and handled.
+
+
+def divide(a, b):
+    return a / b
+
+def calculate():
+    x = 10
+    y = 0
+    result = divide(x, y)
+    print(result)
+
+calculate()
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q3. Which python statements are used to catch and handle exceptions? Explain with an example.
+
+
+In Python, the try and except statements are used to catch and handle exceptions. 
+The try block contains the code that may raise an exception, and the except block specifies how to handle the exception if it occurs.
+
+def divide(a, b):
+    try:
+        result = a / b
+        print("Division result:", result)
+    except ZeroDivisionError:
+        print("Error: Division by zero is not allowed.")
+
+# Example 1: Division with a non-zero denominator
+divide(10, 2)
+# Output: Division result: 5.0
+
+# Example 2: Division with a zero denominator
+divide(10, 0)
+# Output: Error: Division by zero is not allowed.
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+Q4. Explain with an example:
+    a. try and else
+    b. finally
+    c. raise
+
+
+a. try and else:
+      The else block in a try-except statement is optional and is executed when no exception occurs in the corresponding try block.
+      It provides a way to specify additional code that should be executed if no exceptions are raised.
+
+def divide(a, b):
+    try:
+        result = a / b
+    except ZeroDivisionError:
+        print("Error: Division by zero is not allowed.")
+    else:
+        print("Division result:", result)
+
+# Example 1: Division with a non-zero denominator
+divide(10, 2)
+# Output: Division result: 5.0
+
+# Example 2: Division with a zero denominator
+divide(10, 0)
+# Output: Error: Division by zero is not allowed.
+
+
+
+b. finally:
+    The finally block is also optional and is used to specify code that should be executed regardless of whether an 
+    exception occurred or not. It ensures that certain cleanup actions or necessary operations are performed, 
+    even if an exception is raised.
+
+
+def divide(a, b):
+    try:
+        result = a / b
+        print("Division result:", result)
+    except ZeroDivisionError:
+        print("Error: Division by zero is not allowed.")
+    finally:
+        print("Division operation completed.")
+
+# Example 1: Division with a non-zero denominator
+divide(10, 2)
+# Output:
+# Division result: 5.0
+# Division operation completed.
+
+# Example 2: Division with a zero denominator
+divide(10, 0)
+# Output:
+# Error: Division by zero is not allowed.
+# Division operation completed.
+
+
+c. raise:
+    The raise statement in Python is used to explicitly raise an exception. 
+    It allows programmers to raise custom exceptions or re-raise existing exceptions within their code.
+
+def check_age(age):
+    if age < 0:
+        raise ValueError("Invalid age: Age cannot be negative.")
+    elif age < 18:
+        raise ValueError("Invalid age: Must be 18 or above.")
+    else:
+        print("Age is valid.")
+
+try:
+    check_age(20)
+except ValueError as e:
+    print(e)
+
+try:
+    check_age(-5)
+except ValueError as e:
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+Q5 What are Custom Exceptions in python? Why do we need Custom Exceptions? Explain with an example.
+
+
+
+In Python, custom exceptions are user-defined exceptions that are created by deriving from the built-in Exception class 
+or its subclasses. By creating custom exceptions, programmers can define their own specific exception types 
+to handle unique error conditions that may occur in their programs.
+
+
+class InvalidInputError(Exception):
+    pass
+
+def process_input(data):
+    if not isinstance(data, str):
+        raise InvalidInputError("Invalid input: Input must be a string.")
+    # Rest of the code to process the input
+
+try:
+    user_input = 123
+    process_input(user_input)
+except InvalidInputError as e:
+    print(e)
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+Q6 Create  custom exception class. Use this class to handle an exception.
+
+
+class CustomException(Exception):
+    def __init__(self, message):
+        self.message = message
+
+def divide(a, b):
+    try:
+        if b == 0:
+            raise CustomException("Error: Division by zero is not allowed.")
+        result = a / b
+        print("Division result:", result)
+    except CustomException as e:
+        print(e.message)
+
+# Example: Division with a zero denominator
+divide(10, 0)
+# Output: Error: Division by zero is not allowed.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
