@@ -1,0 +1,184 @@
+Q1. Explain why we have to use the Exception class while creating a Custom Exception.
+
+Exception class as the starting point for your custom exception provides important functionality, 
+compatibility with existing exception handling mechanisms, and standardized error reporting. 
+It helps your custom exception fit well within the Python exception system and ensures a consistent and 
+predictable way of handling and reporting errors in your code.
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+Q2. Write a python program to print Python Exception Hierarchy.
+
+
+Certainly! Here's a Python program that prints the Python Exception Hierarchy:
+
+import sys
+
+def print_exception_hierarchy(exception_class, indent=0):
+    print(' ' * indent + exception_class.__name__)
+    if exception_class.__bases__:
+        for subclass in exception_class.__bases__:
+            print_exception_hierarchy(subclass, indent + 4)
+
+print_exception_hierarchy(BaseException)
+
+
+Here's an example output of the program:
+
+BaseException
+    Exception
+        ArithmeticError
+            FloatingPointError
+            OverflowError
+            ZeroDivisionError
+        AssertionError
+        AttributeError
+        BufferError
+        ...
+    GeneratorExit
+    KeyboardInterrupt
+    MemoryError
+    ...
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+Q3. What errors are defined in the ArithmeticError class? Explain any two with an example.
+
+(a)  ZeroDivisionError: This error occurs when attempting to divide a number by zero. It is a subclass of ArithmeticError.
+
+def divide(a, b):
+    try:
+        result = a / b
+        print("Result:", result)
+    except ZeroDivisionError:
+        print("Error: Division by zero is not allowed.")
+
+# Example: Division with a zero denominator
+divide(10, 0)
+# Output: Error: Division by zero is not allowed.
+
+
+(b)  OverflowError: This error occurs when the result of an arithmetic operation exceeds the maximum representable value for a numeric type. 
+    It is a subclass of ArithmeticError.
+
+def calculate_factorial(n):
+    try:
+        result = 1
+        for i in range(1, n+1):
+            result *= i
+        print("Factorial of", n, "is", result)
+    except OverflowError:
+        print("Error: Result of the factorial operation exceeds the maximum representable value.")
+
+# Example: Calculate factorial of a large number
+calculate_factorial(1000)
+# Output: Error: Result of the factorial operation exceeds the maximum representable value.
+
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+Q4. Why LookupError class is used? Explain with an example KeyError and IndexError.
+
+The LookupError class in Python is a base class for exceptions that occur when a lookup or indexing operation fails. 
+It serves as a parent class for more specific lookup-related exception classes. 
+The LookupError class is useful when you want to catch multiple lookup-related exceptions with a single except block.
+
+  KeyError: 
+    This error occurs when a dictionary or a mapping type is accessed with a key that does not exist in the dictionary.
+
+student_grades = {
+    'John': 90,
+    'Alice': 85,
+    'Bob': 92
+}
+
+try:
+    print(student_grades['Mary'])
+except KeyError:
+    print("Error: The specified key does not exist in the dictionary.")
+
+# Output: Error: The specified key does not exist in the dictionary.
+
+
+  IndexError: 
+    This error occurs when trying to access a list, tuple, or other sequence with an index that is out of range.
+
+numbers = [1, 2, 3, 4, 5]
+
+try:
+    print(numbers[10])
+except IndexError:
+    print("Error: Index out of range.")
+
+# Output: Error: Index out of range.
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+Q5. Explain ImportError. What is ModuleNotFoundError?
+
+ImportError: This exception is raised when an import statement encounters a problem. It can occur due to various reasons, such as:
+
+ -> The module or package being imported does not exist.
+ -> The module or package being imported has an error in its code.
+ ->  There is an issue with the Python environment or the system configuration.
+
+
+ModuleNotFoundError: 
+    Starting from Python 3.6, the ModuleNotFoundError is a subclass of ImportError that specifically 
+    indicates that a module or package could not be found during import.
+
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+Q6. List down some best practices for exception handling in python.
+
+Catch specific exceptions: 
+    Instead of catching generic exceptions like Exception, try to catch specific exceptions that you expect might occur. 
+    This allows for more targeted error handling and avoids catching and suppressing unintended exceptions.
+
+
+Keep exception handling code minimal:
+    Place only the necessary code inside the try block and keep it as short as possible. 
+    This helps to focus on the specific code that might raise an exception and improves code readability.
+
+
+Use multiple except blocks: 
+    If you need to handle different types of exceptions differently, use multiple except blocks to 
+    catch and handle each exception separately. This provides more control over exception handling 
+    and allows for specific error handling strategies.
+
+
+Avoid bare except statements:
+    Avoid using bare except statements without specifying the exception type. 
+    It makes it difficult to identify the specific exception being caught and can lead to unintended error handling.
+
+
+Handle exceptions at the right level: 
+    Handle exceptions at a level where you have the necessary context and resources to handle them effectively. 
+    This could be within a specific function or module, or even at the top-level of your application.
+
+
+Log exceptions: 
+    Consider logging exceptions or error messages instead of just printing them. 
+    Logging provides a centralized record of exceptions, making it easier to analyze and debug issues.
+
+
+Use finally block for cleanup:
+    Use the finally block to perform any necessary cleanup operations, such as closing files or 
+    releasing resources, regardless of whether an exception occurred or not. This ensures that 
+    important cleanup tasks are executed reliably.
+
+
+Reraise exceptions when appropriate: 
+    Sometimes it is necessary to catch an exception, perform some actions, and then re-raise the 
+    same exception or a different exception. This allows for higher-level code or outer exception 
+    handlers to handle the exception appropriately.
+
+
+Use context managers: 
+    Utilize context managers, such as the with statement, to automatically handle resource acquisition and release. 
+    Context managers ensure that resources are properly managed, even in the presence of exceptions.
